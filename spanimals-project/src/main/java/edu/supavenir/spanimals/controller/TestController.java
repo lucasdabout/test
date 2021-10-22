@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import edu.supavenir.spanimals.entites.Animal;
@@ -14,9 +15,18 @@ import edu.supavenir.spanimals.entites.Refuge;
 import edu.supavenir.spanimals.repositories.AnimalRepository;
 import edu.supavenir.spanimals.repositories.EspeceRepository;
 import edu.supavenir.spanimals.repositories.RefugeRepository;
+import io.github.jeemv.springboot.vuejs.VueJS;
 
 @Controller
 public class TestController {
+
+    @Autowired
+    private VueJS vue;
+
+    @ModelAttribute(name = "vue")
+    private VueJS getVue() {
+	return this.vue;
+    }
 
     @Autowired
     private AnimalRepository repoAnimal;
